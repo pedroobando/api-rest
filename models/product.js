@@ -2,11 +2,24 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const ProductSchema = Schema({
-  name: String,
+  name: {
+    type: String,
+    Required: 'Nombre del producto es obligatorio'
+  },
   picture: String,
   price: {type: String, default: 0},
-  category: {type: String, enum: ['computers', 'phones', 'accesories']},
-  description: String
+  category: {
+    type: [{
+      type: String,
+      enum: ['computers', 'phones', 'accesories']
+    }],
+    default: ['computers']
+  },
+  description: String,
+  create_date: {
+    type: Date,
+    default: Date.now
+  }
 })
 
 module.exports = mongoose.model('Product', ProductSchema)
