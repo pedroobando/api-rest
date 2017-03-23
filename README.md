@@ -1,6 +1,21 @@
-# api-rest
-Tutorial Api-Rest - Guiado por Carlos Azaustre
+# Api-RESTful
+Tutorial Api-RESTful - Guiado por Carlos Azaustre
 
-Curso API REST con Node.js y MongoDB 
+### Descripcion
 
-El curso completo se encuentra en YouTube [https://www.youtube.com/playlist?list=PLUdlARNXMVkk7E88zOrphPyGdS50Tadlr]
+Curso API REST con Node.js y MongoDB
+El cual se toma como ejemplo un producto (CRUD)
+
+### Youtube
+
+El curso completo se encuentra en [YouTube](https://www.youtube.com/playlist?list=PLUdlARNXMVkk7E88zOrphPyGdS50Tadlr)
+
+
+
+### Desarollado bajo
+
+- node.js (v6.10.0)
+- express 
+
+### Base de datos
+- mongodb
