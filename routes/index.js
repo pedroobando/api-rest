@@ -16,8 +16,8 @@ api.route('/product/')
   .post(productCtrl.saveProduct)
 
 api.route('/product/:productId')
-    .get(productCtrl.getProduct)
-    .put(productCtrl.updateProduct)
-    .delete(productCtrl.deleteProduct)
+  .get(productCtrl.getProduct)
+  .put(productCtrl.updateProduct)
+  .delete(productCtrl.deleteProduct)
 
 module.exports = api
