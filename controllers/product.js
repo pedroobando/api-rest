@@ -18,8 +18,8 @@ function getProducts (req, res) {
     if (err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
     if (!products) return res.status(404).send({message: `No existen productos`})
 
-    res.status(200).send({ products })
-    //res.status(200).json(products)
+    // res.status(200).send({ products })
+    res.status(200).json(products)
   })
 }
 
@@ -51,7 +51,7 @@ function updateProduct (req, res) {
   Product.findByIdAndUpdate(productId, update, (err, productUpdate) => {
     if (err) res.status(500).send({message: `Error al actualizar el producto: ${err}`})
 
-    res.status(200).send({ product: productUpdate })
+    res.status(200).json({id: productUpdate._id, body: req.body})
   })
 }
 
