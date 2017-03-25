@@ -2,5 +2,6 @@
 
 module.exports = {
   PORT: process.env.PORT || 3001,
-  MDB: process.env.MONGODB || 'mongodb://localhost:27017/shop'
+  MDB: process.env.MONGODB || 'mongodb://localhost:27017/shop',
+  SECRET_TOKEN: 'miclavedetokens'
 }

@@ -28,8 +28,9 @@ const UserSchema = new Schema({
   }
 })
 
-UserSchema.pre('save', (next) => {
+UserSchema.pre('save', function(next) {
   let user = this
+  console.log(user)
   if (!user.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
@@ -42,7 +43,14 @@ UserSchema.pre('save', (next) => {
       next()
     })
   })
+  return next()
 })
+
+// UserSchema.pre('save', (next) => {
+//   this.wasNew = this.isNew
+//   console.log(this.wasNew)
+//   next()
+// })
 
 UserSchema.methods.gravatar = function () {
   if (!this.email) return `https://gravatar.com/avatar/?s=200&d=retro`

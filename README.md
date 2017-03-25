@@ -13,7 +13,10 @@ El curso completo se encuentra en [YouTube](https://www.youtube.com/playlist?lis
 ### Desarollado bajo
 
 - node.js (v6.10.0)
-- express 
+- express
 
 ### Base de datos
 - mongodb
+
+### Usando Token
+- [JWT](https://jwt.io/)
