@@ -3,14 +3,15 @@
 const express = require('express')
 const userRoute = express.Router()
 const userCtrl = require('../controllers/auth')
-const auth = require('../middlewares/auth')
+// const auth = require('../middlewares/auth')
 
 userRoute.route('/signup')
   .post(userCtrl.signUp)
 
-userRoute.route('/private')
-  .get(auth.isAuth, (req, res) => {
-    res.status(200).send({message: 'Tienes acceso..!'})
-  })
+userRoute.route('/signin')
+  .post(userCtrl.signIn)
+
+userRoute.route('/all')
+  .get(userCtrl.getUsers)
 
 module.exports = userRoute

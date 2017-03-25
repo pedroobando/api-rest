@@ -9,15 +9,18 @@ const UserSchema = new Schema({
   email: {
     type: String,
     unique: true,
-    lowercase: true
+    lowercase: true,
+    require: true
   },
   displayName: {
-    type: String
+    type: String,
+    require: true
   },
   avatar: String,
   password: {
     type: String,
-    select: false
+    select: false,
+    require: true
   },
   signupDate: {
     type: Date,
@@ -28,13 +31,12 @@ const UserSchema = new Schema({
   }
 })
 
-UserSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
   let user = this
-  console.log(user)
   if (!user.isModified('password')) return next()
 
   bcrypt.genSalt(10, (err, salt) => {
-    if (err) return next()
+    if (err) return next(err)
 
     bcrypt.hash(user.password, salt, null, (err, hash) => {
       if (err) return next(err)
@@ -43,14 +45,16 @@ UserSchema.pre('save', function(next) {
       next()
     })
   })
-  return next()
 })
 
-// UserSchema.pre('save', (next) => {
-//   this.wasNew = this.isNew
-//   console.log(this.wasNew)
-//   next()
-// })
+UserSchema.methods.comparePassword = (candidatePassword, cb) => {
+  console.log(this.password)
+  console.log(candidatePassword)
+  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
+    if (err) return cb(err)
+    cb(null, isMatch)
+  })
+}
 
 UserSchema.methods.gravatar = function () {
   if (!this.email) return `https://gravatar.com/avatar/?s=200&d=retro`

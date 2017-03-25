@@ -6,7 +6,7 @@ const config = require('../config')
 
 function isAuth (req, res, next) {
   if (!req.headers.authorization) {
-    // console.log(`${req.headers.authorization}`);
+    console.log(`${req.headers.authorization}`)
     return res.status(403).send({message: `No tiene autorizacion`})
   }
 

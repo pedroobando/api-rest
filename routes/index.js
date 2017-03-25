@@ -5,7 +5,6 @@ const api = express.Router()
 const productCtrl = require('../controllers/product')
 const auth = require('../middlewares/auth')
 
-
 // Rutas del API-RESTful
 // api.get('/product/', productCtrl.getProducts)
 // api.get('/product/:productId', productCtrl.getProduct)
@@ -26,6 +25,5 @@ api.route('/private')
   .get(auth.isAuth, (req, res) => {
     res.status(200).send({message: 'Tienes acceso..!'})
   })
-
 
 module.exports = api
