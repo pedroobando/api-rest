@@ -38,9 +38,10 @@ function saveProduct (req, res) {
   product.save((err, productStored) => {
     if (err) {
       res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
+    } else {
+      res.status(200).send({id: productStored._id, product: productStored})
+      console.log('Ok.. POST /api/product')  
     }
-    res.status(200).send({id: productStored._id, product: productStored})
-    console.log('Ok.. POST /api/product')
   })
 }
 

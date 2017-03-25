@@ -4,7 +4,7 @@ const mongoose = require('mongoose')
 const User = require('../models/user')
 const service = require('../services')
 
-function singUp (req, res) {
+function signUp (req, res) {
   const user = new User({
     email: req.body.email,
     displayName: req.body.displayName,
@@ -18,11 +18,15 @@ function singUp (req, res) {
   })
 }
 
-function singIn (req, res) {
+function signIn (req, res) {
 
 }
 
+function signOut (req, res) {
+}
+
 module.exports = {
-  singIn,
-  singUp
+  signIn,
+  signUp,
+  signOut
 }

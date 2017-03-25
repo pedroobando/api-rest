@@ -13,7 +13,7 @@ const ProductSchema = Schema({
   category: {
     type: [{
       type: String,
-      enum: ['computers', 'phones', 'accesories']
+      enum: ['computers', 'phones', 'accesories', 'books']
     }],
     default: ['computers']
   },
