@@ -3,6 +3,7 @@ Tutorial Api-RESTful - Guiado por Carlos Azaustre
 
 ### Descripcion
 Curso API REST con Node.js y MongoDB, el cual se toma como ejemplo un producto (CRUD)
+
 Fecha de inicio del cursillo: 2017-MAR-19
 
 
