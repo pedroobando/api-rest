@@ -16,8 +16,8 @@ api.route('/product/')
   .get(productCtrl.getProducts)
   .post(productCtrl.saveProduct)
 
-api.route('/product/faker/:totalProduct')
-  .get(productCtrl.getfakerProduct)
+api.route('/product/faker')
+  .post(productCtrl.postfakerProduct)
 
 api.route('/product/:productId')
   .get(productCtrl.getProduct)

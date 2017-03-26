@@ -71,10 +71,12 @@ function deleteProduct (req, res) {
   })
 }
 
-function getfakerProduct (req, res) {
-  let totalProduct = req.params.totalProduct
+function postfakerProduct (req, res) {
+  let totalProduct = req.body.total
   let vanProductos = 1
   var fakeProduct = new Product()
+
+  if (!req.body.total) return res.status(404).send({message: 'Debe indicar la cantidad de producto(s) a crear.'})
 
   while (vanProductos <= totalProduct) {
     fakeProduct = new Product({
@@ -104,5 +106,5 @@ module.exports = {
   saveProduct,
   updateProduct,
   deleteProduct,
-  getfakerProduct
+  postfakerProduct
 }

@@ -10,9 +10,17 @@ function isAuth (req, res, next) {
     return res.status(403).send({message: `No tiene autorizacion`})
   }
 
+  //console.log(`${req.headers.authorization}`)
   const token = req.headers.authorization.split(' ')[1]
-  const payload = jwt.decode(token, config.SECRET_TOKEN)
+  var payload
 
+  try {
+    payload = jwt.decode(token, config.SECRET_TOKEN)
+  } catch (err) {
+    return res.status(500).send({message: `Error el token ${err}`})
+  }
+
+  //console.log(payload)
   if (payload.exp <= moment().unix()) {
     return res.status(401).send({message: 'El Token ha expirado'})
   }
