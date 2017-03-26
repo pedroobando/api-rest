@@ -70,7 +70,6 @@ function getUsers (req, res) {
 module.exports = {
   signIn,
   signUp,
-  signOut,
   getUsers,
   getUser
 }

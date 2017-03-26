@@ -15,7 +15,7 @@ const ProductSchema = Schema({
       type: String,
       enum: ['computers', 'phones', 'accesories', 'books']
     }],
-    default: ['computers']
+    default: 'computers'
   },
   description: String,
   create_date: {

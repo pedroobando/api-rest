@@ -1,6 +1,7 @@
 'use strict'
 
 const Product = require('../models/product')
+const faker = require('faker')
 
 function getProduct (req, res) {
   let productId = req.params.productId
@@ -40,7 +41,7 @@ function saveProduct (req, res) {
       res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
     } else {
       res.status(200).send({id: productStored._id, product: productStored})
-      console.log('Ok.. POST /api/product')  
+      console.log('Ok.. POST /api/product')
     }
   })
 }
@@ -70,10 +71,38 @@ function deleteProduct (req, res) {
   })
 }
 
+function getfakerProduct (req, res) {
+  let totalProduct = req.params.totalProduct
+  let vanProductos = 1
+  var fakeProduct = new Product()
+
+  while (vanProductos <= totalProduct) {
+    fakeProduct = new Product({
+      name: faker.commerce.productName(),
+      price: faker.commerce.price(),
+      picture: faker.image.image(),
+      // category: faker.commerce.productMaterial,
+      description: faker.hacker.phrase()
+    })
+
+    fakeProduct.save((err, fakeProductStored) => {
+      if (err) {
+        res.status(500).send({message: `Error al salvar en la base de datos: ${err}`})
+      } else {
+        //res.status(200).send({id: fakeProductStored._id, product: fakeProductStored})
+        // console.log(`Ok.. POST /api/product [id:${fakeProductStored._id}]`)
+      }
+    })
+    vanProductos++
+  }
+  res.status(200).send({totalProduct: vanProductos--})
+}
+
 module.exports = {
   getProduct,
   getProducts,
   saveProduct,
   updateProduct,
-  deleteProduct
+  deleteProduct,
+  getfakerProduct
 }
