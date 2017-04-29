@@ -34,7 +34,7 @@ function signIn (req, res) {
 
   User.findOne({email: user.email}, (err, userfind) => {
     if (err) return res.status(500).send({message: `Error al realizar la peticion: ${err}`})
-    if (!userfind) return res.status(404).send({message: `El usuario no existe..!`})
+    if (!userfind) return res.status(401).send({message: `Fallo de autenticacion.`})
 
     bcrypt.compare(user.password, userfind.password, (err, isMatch) => {
       if (err) return err
@@ -44,8 +44,8 @@ function signIn (req, res) {
           token: service.createToken(userfind)
         })
       } else {
-        res.status(500).send({
-          message: 'No te has logueado correctamente',
+        res.status(401).send({
+          message: 'Fallo de autenticacion',
           token: null
         })
       }
