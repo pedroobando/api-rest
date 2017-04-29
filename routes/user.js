@@ -2,7 +2,7 @@
 
 const express = require('express')
 const userRoute = express.Router()
-const userCtrl = require('../controllers/auth')
+const userCtrl = require('../controllers/user')
 // const auth = require('../middlewares/auth')
 
 userRoute.route('/signup')
@@ -11,7 +11,7 @@ userRoute.route('/signup')
 userRoute.route('/signin')
   .post(userCtrl.signIn)
 
-userRoute.route('/all')
+userRoute.route('/')
   .get(userCtrl.getUsers)
 
 module.exports = userRoute

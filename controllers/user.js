@@ -38,8 +38,19 @@ function signIn (req, res) {
       if (err) res.status(500).send({message: `Error al authenticar el usuario ${err}`})
       console.log(`password: ${user.password} is ${isMatch}`)
     })
+
+    req.user = userfind
+    res.status(200).send({
+      message: 'Te has logueado correctamente',
+      token: service.createToken(userfind)
+    })
   })
+
+  /*
+  Viejo codigo
   res.status(200).json({isMatch})
+  */
+
 }
 
 /* Esto no debe de ir aqui se debe de crear un

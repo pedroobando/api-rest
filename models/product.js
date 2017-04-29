@@ -9,7 +9,10 @@ const ProductSchema = Schema({
     Required: 'Nombre del producto es obligatorio'
   },
   picture: String,
-  price: {type: String, default: 0},
+  price: {
+    type: String,
+    default: 0
+  },
   category: {
     type: [{
       type: String,
