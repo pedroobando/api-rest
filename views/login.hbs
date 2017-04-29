@@ -1,0 +1,24 @@
+<form id="login"   method="post">
+  <label for="">Email:</label>
+  <input type="email" name="email" value="" placeholder="Indique el Email">
+  <br><br>
+  <label for="">Password:</label>
+  <input type="password" name="password" value="" placeholder="Indique la contrase~na">
+  <br><br>
+  <input type="submit" value="Login">
+</form>
+
+<script type="text/javascript">
+  const formlogin = document.querySelector('#login')
+  const formData = new formData(formlogin)
+
+  formlogin.addEventListener('submit', event => {
+    event.preventDefault()
+    fetch('/usr/sigin', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.json())
+    .then(data => console.log(data))
+  })
+</script>

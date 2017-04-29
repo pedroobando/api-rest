@@ -1,5 +1,5 @@
 # Api-RESTful
-Tutorial Api-RESTful - Guiado por Carlos Azaustre
+Tutorial Api-RESTful - Guiado por [Carlos Azaustre](https://twitter.com/carlosazaustre)
 
 ### Descripcion
 
@@ -23,10 +23,14 @@ Hasta ahora van 19 lecciones del mismo, es muy divertido.
 
 - mongodb
 
-### Usando Token
+### Usando Token & Postman
 
 - [JWT](https://jwt.io/)
-
-### Usando Postman
-
 - [Postman](https://www.getpostman.com/) Para ver y verificas las API's
+
+### Notas
+
+En el capitulo 17, una vez contruidas las rutas probaremos el [JWT](https://jwt.io/) Token.
+
+- Para enviar el Token, este lo hacemos mediante la cabecera o Header:
+-- autorization: Bearer 'elcodigo que muestra el token'

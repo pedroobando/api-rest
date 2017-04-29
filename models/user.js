@@ -16,10 +16,13 @@ const UserSchema = new Schema({
     type: String,
     require: true
   },
-  avatar: String,
+  avatar: {
+    type: String,
+    require: false
+  },
   password: {
     type: String,
-    select: false,
+    select: true,
     require: true
   },
   signupDate: {
@@ -48,10 +51,8 @@ UserSchema.pre('save', function (next) {
 })
 
 UserSchema.methods.comparePassword = (candidatePassword, cb) => {
-  console.log(this.password)
-  console.log(candidatePassword)
-  bcrypt.compare(candidatePassword, this.password, (err, isMatch) => {
-    if (err) return cb(err)
+  bcrypt.compare(candidatePassword.compare, candidatePassword.base, (err, isMatch) => {
+    if (err) return err
     cb(null, isMatch)
   })
 }
